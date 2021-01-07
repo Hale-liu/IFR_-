@@ -44,21 +44,11 @@ extern RC_Ctl_t RC_CtrlData;
 //--------------------------------------------------------------------------------------------------//
 void BASE_Init(ROBO_BASE *Robo)       
 {
-  Pos_System* P_Pos=NULL;           //位置环信息和pid
-  P_Pos=&Robo->Pos_MotorLF; PID_Init(&P_Pos->Pos_PID,			0.3,	0,	0,	5000,	0,	0,	7000);
-  P_Pos->Motor_Num=0;				PID_Init(&P_Pos->Speed_PID,			5,	0,	0,	5000,	0,	0,	7000); 
-  P_Pos=&Robo->Pos_MotorRF; PID_Init(&P_Pos->Pos_PID,			0,	0,	0,	0,	0,	0,	0);
-  P_Pos->Motor_Num=1;				PID_Init(&P_Pos->Speed_PID,			0,	0,	0,	0,	0,	0,	0); 
-  P_Pos=&Robo->Pos_MotorRB; PID_Init(&P_Pos->Pos_PID,			0,	0,	0,	0,	0,	0,	0);
-  P_Pos->Motor_Num=2;				PID_Init(&P_Pos->Speed_PID,			0,	0,	0,	0,	0,	0,	0); 
-  P_Pos=&Robo->Pos_MotorLB; PID_Init(&P_Pos->Pos_PID,			0,	0,	0,	0,	0,	0,	0);
-  P_Pos->Motor_Num=3;				PID_Init(&P_Pos->Speed_PID,			0,	0,	0,	0,	0,	0,	0); 
-
   Speed_System* P_Speed=NULL;      //速度环信息和pid
-  P_Speed=&Robo->Speed_MotorLF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Pos->Motor_Num=0;
-  P_Speed=&Robo->Speed_MotorRF; PID_Init(&P_Speed->Speed_PID,	0,	0,	0,	0,	0,	0,	0); P_Pos->Motor_Num=1;
-  P_Speed=&Robo->Speed_MotorRB; PID_Init(&P_Speed->Speed_PID,	0,	0,	0,	0,	0,	0,	0); P_Pos->Motor_Num=2;
-  P_Speed=&Robo->Speed_MotorLB; PID_Init(&P_Speed->Speed_PID,	0,	0,	0,	0,	0,	0,	0); P_Pos->Motor_Num=3;
+  P_Speed=&Robo->Speed_MotorLF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=0;
+  P_Speed=&Robo->Speed_MotorRF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=1;
+  P_Speed=&Robo->Speed_MotorRB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=2;
+  P_Speed=&Robo->Speed_MotorLB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=3;
 }
 
 //--------------------------------------------------------------------------------------------------//
@@ -142,12 +132,6 @@ void Motor_Speed_Analysis(ROBO_BASE* Robo,uint8_t* RX_Data,uint32_t Motor_Num)
 //--------------------------------------------------------------------------------------------------//
 void PID_Send(ROBO_BASE* Robo)
 {
-  /*Pos_System* P_Pos=NULL;
-  P_Pos=&Robo->Pos_MotorLB; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
-  P_Pos=&Robo->Pos_MotorRB; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
-  P_Pos=&Robo->Pos_MotorLF; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
-  P_Pos=&Robo->Pos_MotorRF; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
-  Send_To_Motor(&hcan2,Robo->Tx_CAN2);*/
 	if(system_state.State!=WORKING) return;
   Speed_System* P_Speed=NULL;
   P_Speed=&Robo->Speed_MotorLB; PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);

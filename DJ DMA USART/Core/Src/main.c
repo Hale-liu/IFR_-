@@ -103,7 +103,6 @@ int main(void)
 	CAN_FilterConfig();
 	HAL_CAN_ActivateNotification(&hcan1,CAN_IT_RX_FIFO0_MSG_PENDING);
 	HAL_CAN_Start(&hcan1);
-HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_SET);
 	BASE_Init(&Robo);
   /* USER CODE END 2 */
 
