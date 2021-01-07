@@ -19,8 +19,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-#include "stdlib.h"
+
 /* USER CODE BEGIN 0 */
+#include "stdlib.h"
 UART_RX_BUFFER Uart1_Rx;
 /* USER CODE END 0 */
 

@@ -56,8 +56,6 @@
 /* USER CODE BEGIN 0 */
 CAN_TxHeaderTypeDef TxMessage;
 CAN_RxHeaderTypeDef RxMessage;
-uint8_t RxData[8];
-uint8_t TxData[8];
 
 /* USER CODE END 0 */
 
@@ -69,6 +67,8 @@ extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN EV */
 extern RC_Ctl_t RC_CtrlData;
 extern UART_RX_BUFFER Uart1_Rx;
+extern ROBO_BASE Robo;
+extern System_state system_state;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -216,9 +216,10 @@ void CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
 	
-	if(HAL_CAN_GetRxMessage(&hcan1,CAN_RX_FIFO0,&RxMessage,RxData)==HAL_OK)
+	if(HAL_CAN_GetRxMessage(&hcan1,CAN_RX_FIFO0,&RxMessage,Robo.Rx_CAN1)==HAL_OK)
 	{
 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1,GPIO_PIN_SET);
+		Motor_Speed_Analysis(&Robo,Robo.Rx_CAN1,RxMessage.StdId);
 	}
   /* USER CODE END CAN1_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan1);
@@ -233,7 +234,10 @@ void CAN1_RX0_IRQHandler(void)
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-
+	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1,GPIO_PIN_SET);
+	Calculate_and_send();
+	System_check(&system_state);
+	if(Robo.Speed_X<5000&&Robo.Speed_Y<5000) feed_dog(&system_state);
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
@@ -247,6 +251,7 @@ void TIM2_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
+	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,GPIO_PIN_RESET);
 	Uart_DMA_Process(&huart1,&hdma_usart1_rx,&Uart1_Rx,RemoteDataProcess);
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);

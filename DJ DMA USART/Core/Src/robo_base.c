@@ -12,14 +12,17 @@
 //---------头文件引用部分---------//
 #include "robo_base.h"
 #include "can.h"
+#include "Remote.h"
 //--------------------------------//
 
 //---------变量声明部分-----------//
 ROBO_BASE Robo_Base;
+System_state system_state={WORKING,0};
 CAN_HandleTypeDef hcan2;
 //--------------------------------//
 
 //---------外部变量声明部分-------//
+extern RC_Ctl_t RC_CtrlData;
 //--------------------------------//
 
 /**********************************************************电机pid控制系统****************************************************************************************************/
@@ -145,12 +148,12 @@ void PID_Send(ROBO_BASE* Robo)
   P_Pos=&Robo->Pos_MotorLF; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
   P_Pos=&Robo->Pos_MotorRF; PID_Pos_Cal(P_Pos,Robo->Tx_CAN2);
   Send_To_Motor(&hcan2,Robo->Tx_CAN2);*/
-
+	if(system_state.State!=WORKING) return;
   Speed_System* P_Speed=NULL;
   P_Speed=&Robo->Speed_MotorLB; PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);
   P_Speed=&Robo->Speed_MotorRB; PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);
   P_Speed=&Robo->Speed_MotorLF; PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);
-  P_Speed=&Robo->Speed_MotorRF;PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);
+  P_Speed=&Robo->Speed_MotorRF; PID_Speed_Cal(P_Speed,Robo->Tx_CAN1);
   Send_To_Motor(&hcan1,Robo->Tx_CAN1);
 }
 
@@ -475,7 +478,7 @@ void PID_Pos_Cal(Pos_System* Pos_Motor,uint8_t *Tx_msg)
 //--------------------------------------------------------------------------------------------------//
 void PID_Speed_Cal(Speed_System* Speed_Motor,uint8_t *Tx_msg)
 {
-
+	if(system_state.State!=WORKING) return;
 	Speed_Motor->Speed_PID.error =  Speed_Motor->Tar_Speed - Speed_Motor->Info.Speed;
 	if(Speed_Motor->Speed_PID.error > Speed_Motor->Speed_PID.error_max)
 		Speed_Motor->Speed_PID.error = Speed_Motor->Speed_PID.error_max;
@@ -540,4 +543,31 @@ void Send_To_Motor(CAN_HandleTypeDef *hcan,uint8_t* Tx_Data)
   }
 }
 
+void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)//将目标速度分配给四个轮子
+{
+	Robo->Speed_X=(RC_CtrlData->rc.ch0-1024)*4000.0f/660.0f;
+	Robo->Speed_Y=(RC_CtrlData->rc.ch1-1024)*4000.0f/660.0f;
+	
+	Robo->Speed_MotorLF.Tar_Speed = Robo->Speed_X + Robo->Speed_Y;    
+	Robo->Speed_MotorLB.Tar_Speed = Robo->Speed_X - Robo->Speed_Y; 
+	Robo->Speed_MotorRF.Tar_Speed = Robo->Speed_X - Robo->Speed_Y;   
+	Robo->Speed_MotorRB.Tar_Speed = Robo->Speed_X + Robo->Speed_Y;  
+}
+
+void Calculate_and_send(void)//计算pid的输出和发送
+{
+	speed_distribution(&Robo_Base,&RC_CtrlData);
+	PID_Send(&Robo_Base);
+}
+
+void System_check(System_state *system_state)
+{
+	if(system_state->count_time<1000) system_state->count_time++;
+	else system_state->State=MISSING;
+}
+
+void feed_dog(System_state *system_state)
+{
+	system_state->count_time=0;
+}
 
