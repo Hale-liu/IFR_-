@@ -1,7 +1,7 @@
 Dependencies for Project 'DJ USART DMA', Target 'DJ USART DMA': (DO NOT MODIFY !)
 F (startup_stm32f405xx.s)(0x5FF6E340)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32F405xx SETA 1"--list startup_stm32f405xx.lst --xref -o "dj usart dma\startup_stm32f405xx.o" --depend "dj usart dma\startup_stm32f405xx.d")
-F (..\Core\Src\Remote.c)(0x5FF5B187)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\remote.o" --omf_browse "dj usart dma\remote.crf" --depend "dj usart dma\remote.d")
-I (..\Core\Inc\Remote.h)(0x5FF5B0C9)
+F (..\Core\Src\Remote.c)(0x5FF7F601)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\remote.o" --omf_browse "dj usart dma\remote.crf" --depend "dj usart dma\remote.d")
+I (..\Core\Inc\Remote.h)(0x5FF7F601)
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x5FF6E33F)
@@ -34,10 +34,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
-I (..\Core\Inc\robo_base.h)(0x5FF6D831)
+I (..\Core\Inc\robo_base.h)(0x5FF7F6B6)
 I (D:\ARM\ARMCC\include\math.h)(0x599ECD2E)
-F (..\Core\Src\robo_base.c)(0x5FF6F092)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\robo_base.o" --omf_browse "dj usart dma\robo_base.crf" --depend "dj usart dma\robo_base.d")
-I (..\Core\Inc\robo_base.h)(0x5FF6D831)
+F (..\Core\Src\robo_base.c)(0x5FF86CBD)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\robo_base.o" --omf_browse "dj usart dma\robo_base.crf" --depend "dj usart dma\robo_base.d")
+I (..\Core\Inc\robo_base.h)(0x5FF7F6B6)
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x5FF6E33F)
@@ -71,9 +71,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
 I (D:\ARM\ARMCC\include\math.h)(0x599ECD2E)
-I (..\Core\Inc\Remote.h)(0x5FF5B0C9)
+I (..\Core\Inc\Remote.h)(0x5FF7F601)
 I (..\Core\Inc\can.h)(0x5FF6E33E)
-F (../Core/Src/main.c)(0x5FF6F0BF)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\main.o" --omf_browse "dj usart dma\main.crf" --depend "dj usart dma\main.d")
+F (../Core/Src/main.c)(0x5FF7E325)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\main.o" --omf_browse "dj usart dma\main.crf" --depend "dj usart dma\main.d")
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x5FF6E33F)
@@ -111,8 +111,8 @@ I (..\Core\Inc\dma.h)(0x5FF6E33E)
 I (..\Core\Inc\tim.h)(0x5FF6E33E)
 I (..\Core\Inc\usart.h)(0x5FF6E33E)
 I (..\Core\Inc\gpio.h)(0x5FF6E33E)
-I (..\Core\Inc\Remote.h)(0x5FF5B0C9)
-I (..\Core\Inc\robo_base.h)(0x5FF6D831)
+I (..\Core\Inc\Remote.h)(0x5FF7F601)
+I (..\Core\Inc\robo_base.h)(0x5FF7F6B6)
 I (D:\ARM\ARMCC\include\math.h)(0x599ECD2E)
 F (../Core/Src/gpio.c)(0x5FF6E33E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\gpio.o" --omf_browse "dj usart dma\gpio.crf" --depend "dj usart dma\gpio.d")
 I (..\Core\Inc\gpio.h)(0x5FF6E33E)
@@ -216,7 +216,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
-F (../Core/Src/tim.c)(0x5FF6E33E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\tim.o" --omf_browse "dj usart dma\tim.crf" --depend "dj usart dma\tim.d")
+F (../Core/Src/tim.c)(0x5FF842C8)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\tim.o" --omf_browse "dj usart dma\tim.crf" --depend "dj usart dma\tim.d")
 I (..\Core\Inc\tim.h)(0x5FF6E33E)
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
@@ -250,7 +250,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
-F (../Core/Src/usart.c)(0x5FF6E33E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\usart.o" --omf_browse "dj usart dma\usart.crf" --depend "dj usart dma\usart.d")
+F (../Core/Src/usart.c)(0x5FF7E326)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\usart.o" --omf_browse "dj usart dma\usart.crf" --depend "dj usart dma\usart.d")
 I (..\Core\Inc\usart.h)(0x5FF6E33E)
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
@@ -285,7 +285,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
 I (D:\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
-F (../Core/Src/stm32f4xx_it.c)(0x5FF6E391)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\stm32f4xx_it.o" --omf_browse "dj usart dma\stm32f4xx_it.crf" --depend "dj usart dma\stm32f4xx_it.d")
+F (../Core/Src/stm32f4xx_it.c)(0x5FF86CCC)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\stm32f4xx_it.o" --omf_browse "dj usart dma\stm32f4xx_it.crf" --depend "dj usart dma\stm32f4xx_it.d")
 I (..\Core\Inc\main.h)(0x5FF6E33F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5FC9F19E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x5FF6E33F)
@@ -319,8 +319,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5FC9F19E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5FC9F19E)
 I (..\Core\Inc\stm32f4xx_it.h)(0x5FF6E33E)
-I (..\Core\Inc\Remote.h)(0x5FF5B0C9)
-I (..\Core\Inc\robo_base.h)(0x5FF6D831)
+I (..\Core\Inc\Remote.h)(0x5FF7F601)
+I (..\Core\Inc\robo_base.h)(0x5FF7F6B6)
 I (D:\ARM\ARMCC\include\math.h)(0x599ECD2E)
 I (..\Core\Inc\usart.h)(0x5FF6E33E)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x5FF6E33E)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\Core\Inc -I ..\FREEROTS\include -I ..\FREEROTS\portable\RVDS\ARM_CM4F-I.\RTE\_DJ_USART_DMA-ID:\ARM\CMSIS\5.5.1\CMSIS\Core\Include-ID:\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F405xx -DUSE_HAL_DRIVER -DSTM32F405xx-o "dj usart dma\stm32f4xx_hal_msp.o" --omf_browse "dj usart dma\stm32f4xx_hal_msp.crf" --depend "dj usart dma\stm32f4xx_hal_msp.d")

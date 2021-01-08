@@ -78,11 +78,6 @@ typedef struct Speed_System			//速度环系统
 
 typedef struct Robo_Base			//底盘结构体
 {
-	Pos_System Pos_MotorLF;			//位置环--左前轮
-	Pos_System Pos_MotorLB;			//位置环--左后轮
-	Pos_System Pos_MotorRF;			//位置环--右前轮
-	Pos_System Pos_MotorRB;			//位置环--右后轮
-	
 	Speed_System Speed_MotorLF;		//速度环--左前轮
 	Speed_System Speed_MotorLB;		//速度环--左后轮
 	Speed_System Speed_MotorRF;		//速度环--右前轮
@@ -92,9 +87,7 @@ typedef struct Robo_Base			//底盘结构体
 	int Speed_Y;					//底盘Y方向上目标速度
 	float Angle;					//底盘运动的相对方向
 	
-	uint8_t Tx_CAN2[8];				//CAN2通信发送数据
 	uint8_t Tx_CAN1[8];				//CAN1通信发送数据
-	uint8_t Rx_CAN2[8];				//CAN2通信接收数据
 	uint8_t Rx_CAN1[8];				//CAN1通信接收数据
 }ROBO_BASE;
 

@@ -12,35 +12,12 @@
 /* ----------------------- Data Struct ------------------------------------- */
 typedef struct
 {
-		struct 
-		{
 			uint16_t ch0;
 			uint16_t ch1;
 			uint16_t ch2;
 			uint16_t ch3;
 			uint8_t s1;
 			uint8_t s2;
-		}rc;
-		
-		struct
-		{
-			int16_t x;
-			int16_t y;
-			int16_t z;
-			uint8_t press_l;
-			uint8_t press_r;
-		}mouse;
-		
-		struct
-		{
-			uint16_t vl;
-			uint16_t vh;  
-		}key;
-		
-		uint16_t SW;
-		
-		uint8_t update;
-		
 }RC_Ctl_t;
 
 void RemoteDataProcess(uint8_t *pData);

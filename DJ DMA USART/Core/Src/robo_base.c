@@ -16,13 +16,13 @@
 //--------------------------------//
 
 //---------变量声明部分-----------//
-ROBO_BASE Robo_Base;
 System_state system_state={WORKING,0};
 CAN_HandleTypeDef hcan2;
 //--------------------------------//
 
 //---------外部变量声明部分-------//
 extern RC_Ctl_t RC_CtrlData;
+extern ROBO_BASE Robo;
 //--------------------------------//
 
 /**********************************************************电机pid控制系统****************************************************************************************************/
@@ -45,10 +45,10 @@ extern RC_Ctl_t RC_CtrlData;
 void BASE_Init(ROBO_BASE *Robo)       
 {
   Speed_System* P_Speed=NULL;      //速度环信息和pid
-  P_Speed=&Robo->Speed_MotorLF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=0;
-  P_Speed=&Robo->Speed_MotorRF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=1;
-  P_Speed=&Robo->Speed_MotorRB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=2;
-  P_Speed=&Robo->Speed_MotorLB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	0,	7000); P_Speed->Motor_Num=3;
+  P_Speed=&Robo->Speed_MotorLF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	5000,	5000); P_Speed->Motor_Num=0;
+  P_Speed=&Robo->Speed_MotorRF; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	5000,	5000); P_Speed->Motor_Num=1;
+  P_Speed=&Robo->Speed_MotorRB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	5000,	5000); P_Speed->Motor_Num=2;
+  P_Speed=&Robo->Speed_MotorLB; PID_Init(&P_Speed->Speed_PID,	5,	0,	0,	5000,	0,	5000,	5000); P_Speed->Motor_Num=3;
 }
 
 //--------------------------------------------------------------------------------------------------//
@@ -70,18 +70,18 @@ void BASE_Init(ROBO_BASE *Robo)
 //		直接对case的数据进行修改, 有几个位置环的轮子就加几个, 然后让指针指向对应的轮子就行.
 //
 //--------------------------------------------------------------------------------------------------//
-void Motor_Pos_Analysis(ROBO_BASE* Robo,uint8_t* RX_Data,uint32_t Motor_Num)
-{
-  Pos_System* P_Motor=NULL;
-  switch(Motor_Num)
-  {
-    case 0x201:P_Motor=&Robo->Pos_MotorLF;break;
-    case 0x202:P_Motor=&Robo->Pos_MotorRF;break;
-    case 0x203:P_Motor=&Robo->Pos_MotorRB;break;
-    case 0x204:P_Motor=&Robo->Pos_MotorLB;break;
-	default:break;
-  }if(P_Motor!=NULL) Pos_Info_Analysis(&P_Motor->Info,RX_Data);
-}
+//void Motor_Pos_Analysis(ROBO_BASE* Robo,uint8_t* RX_Data,uint32_t Motor_Num)
+//{
+//  Pos_System* P_Motor=NULL;
+//  switch(Motor_Num)
+//  {
+//    case 0x201:P_Motor=&Robo->Pos_MotorLF;break;
+//    case 0x202:P_Motor=&Robo->Pos_MotorRF;break;
+//    case 0x203:P_Motor=&Robo->Pos_MotorRB;break;
+//    case 0x204:P_Motor=&Robo->Pos_MotorLB;break;
+//	default:break;
+//  }if(P_Motor!=NULL) Pos_Info_Analysis(&P_Motor->Info,RX_Data);
+//}
 
 //--------------------------------------------------------------------------------------------------//
 //3.获取当前速度环速度数据（speed入口）
@@ -529,19 +529,19 @@ void Send_To_Motor(CAN_HandleTypeDef *hcan,uint8_t* Tx_Data)
 
 void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)//将目标速度分配给四个轮子
 {
-	Robo->Speed_X=(RC_CtrlData->rc.ch0-1024)*4000.0f/660.0f;
-	Robo->Speed_Y=(RC_CtrlData->rc.ch1-1024)*4000.0f/660.0f;
+	Robo->Speed_X=(RC_CtrlData->ch0-1024)*4000.0f/660.0f;
+	Robo->Speed_Y=(RC_CtrlData->ch1-1024)*4000.0f/660.0f;
 	
 	Robo->Speed_MotorLF.Tar_Speed = Robo->Speed_X + Robo->Speed_Y;    
-	Robo->Speed_MotorLB.Tar_Speed = Robo->Speed_X - Robo->Speed_Y; 
-	Robo->Speed_MotorRF.Tar_Speed = Robo->Speed_X - Robo->Speed_Y;   
+	Robo->Speed_MotorLB.Tar_Speed = Robo->Speed_Y - Robo->Speed_X; 
+	Robo->Speed_MotorRF.Tar_Speed = Robo->Speed_Y - Robo->Speed_X;   
 	Robo->Speed_MotorRB.Tar_Speed = Robo->Speed_X + Robo->Speed_Y;  
 }
 
 void Calculate_and_send(void)//计算pid的输出和发送
 {
-	speed_distribution(&Robo_Base,&RC_CtrlData);
-	PID_Send(&Robo_Base);
+	speed_distribution(&Robo,&RC_CtrlData);
+	PID_Send(&Robo);
 }
 
 void System_check(System_state *system_state)
