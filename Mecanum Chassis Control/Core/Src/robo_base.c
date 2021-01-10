@@ -527,27 +527,27 @@ void Send_To_Motor(CAN_HandleTypeDef *hcan,uint8_t* Tx_Data)
   }
 }
 
-//void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)//将目标速度分配给四个轮子
-//{
-//	Robo->Speed_X=(RC_CtrlData->ch0-1024)*4000.0f/660.0f;
-//	Robo->Speed_Y=(RC_CtrlData->ch1-1024)*4000.0f/660.0f;
-//	
-//	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y;    
-//	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X; 
-//	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X;   
-//	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y;  
-//}
-
-void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)
+void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)//正常模式全向运动
 {
 	Robo->Speed_X=(RC_CtrlData->ch0-1024)*4000.0f/660.0f;
 	Robo->Speed_Y=(RC_CtrlData->ch1-1024)*4000.0f/660.0f;
 	
-	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y - w*R;    
-	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X + w*R; 
-	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X - w*R;   
-	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y + w*R;  
+	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y;    
+	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X; 
+	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X;   
+	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y;  
 }
+
+//void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)
+//{
+//	Robo->Speed_X=(RC_CtrlData->ch2-1024)*4000.0f/660.0f;
+//	Robo->Speed_Y=(RC_CtrlData->ch3-1024)*4000.0f/660.0f;
+//	
+//	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y - w*R;    
+//	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X + w*R; 
+//	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X - w*R;   
+//	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y + w*R;  
+//}
 
 void Clockwise_pirouette(ROBO_BASE* Robo)//原地顺时针旋转
 {
@@ -567,7 +567,12 @@ void counterclockwise_pirouette(ROBO_BASE* Robo)//原地逆时针旋转
 
 void Calculate_and_send(void)//计算pid的输出和发送
 {
-	speed_distribution(&Robo,&RC_CtrlData);
+	switch(RC_CtrlData.s1)
+	{
+		case 2:speed_distribution(&Robo,&RC_CtrlData);break;
+		case 3:Clockwise_pirouette(&Robo);break;
+		case 1:counterclockwise_pirouette(&Robo);break;
+	}
 	PID_Send(&Robo);
 }
 

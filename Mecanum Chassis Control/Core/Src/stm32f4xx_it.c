@@ -233,12 +233,7 @@ void CAN1_RX0_IRQHandler(void)
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-	switch(RC_CtrlData.s1)
-	{
-		case 2:speed_distribution(&Robo,&RC_CtrlData);break;
-		case 3:Clockwise_pirouette(&Robo);break;
-		case 1:counterclockwise_pirouette(&Robo);break;
-	}
+	Calculate_and_send();
 	System_check(&system_state);
 	Feed_dog(&system_state);
   /* USER CODE END TIM2_IRQn 0 */
