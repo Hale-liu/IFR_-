@@ -26,6 +26,7 @@
 #include "Remote.h"
 #include "robo_base.h"
 #include "usart.h"
+#include "math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -235,7 +236,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 0 */
 	Calculate_and_send();
 	System_check(&system_state);
-	Feed_dog(&system_state);
+	if(sqrt(pow(Robo.Speed_X,2)+pow(Robo.Speed_Y,2))<6000) Feed_dog(&system_state);
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
