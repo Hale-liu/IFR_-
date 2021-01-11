@@ -16,7 +16,6 @@
 //--------------------------------//
 
 //---------变量声明部分-----------//
-uint16_t w=0;
 System_state system_state={WORKING,0};
 //--------------------------------//
 
@@ -531,38 +530,33 @@ void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)//正常模式全向运动
 {
 	Robo->Speed_X=(RC_CtrlData->ch0-1024)*4000.0f/660.0f;
 	Robo->Speed_Y=(RC_CtrlData->ch1-1024)*4000.0f/660.0f;
+	Robo->speed_turn=(RC_CtrlData->ch2-1024)*2000.0f/660.0f;
 	
-	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y;    
-	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X; 
-	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X;   
-	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y;  
+	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y;
+	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X;
+	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X;
+	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y;
+	
+	Robo->Speed_MotorLF.Tar_Speed =	 Robo->speed_turn;
+	Robo->Speed_MotorLB.Tar_Speed =  Robo->speed_turn;
+	Robo->Speed_MotorRF.Tar_Speed =  Robo->speed_turn;
+	Robo->Speed_MotorRB.Tar_Speed =  Robo->speed_turn;
 }
-
-//void speed_distribution(ROBO_BASE* Robo,RC_Ctl_t* RC_CtrlData)
-//{
-//	Robo->Speed_X=(RC_CtrlData->ch2-1024)*4000.0f/660.0f;
-//	Robo->Speed_Y=(RC_CtrlData->ch3-1024)*4000.0f/660.0f;
-//	
-//	Robo->Speed_MotorLF.Tar_Speed =  Robo->Speed_X + Robo->Speed_Y - w*R;    
-//	Robo->Speed_MotorLB.Tar_Speed =  Robo->Speed_Y - Robo->Speed_X + w*R; 
-//	Robo->Speed_MotorRF.Tar_Speed = -Robo->Speed_Y + Robo->Speed_X - w*R;   
-//	Robo->Speed_MotorRB.Tar_Speed = -Robo->Speed_X - Robo->Speed_Y + w*R;  
-//}
 
 void Clockwise_pirouette(ROBO_BASE* Robo)//原地顺时针旋转
 {
 	Robo->Speed_MotorLF.Tar_Speed = 4000; 
 	Robo->Speed_MotorLB.Tar_Speed = 4000;
-	Robo->Speed_MotorRF.Tar_Speed =-4000;   
-	Robo->Speed_MotorRB.Tar_Speed =-4000;
+	Robo->Speed_MotorRF.Tar_Speed = 4000;   
+	Robo->Speed_MotorRB.Tar_Speed = 4000;
 }
 
 void counterclockwise_pirouette(ROBO_BASE* Robo)//原地逆时针旋转
 {
-	Robo->Speed_MotorLF.Tar_Speed =-4000; 
-	Robo->Speed_MotorLB.Tar_Speed =-4000;
-	Robo->Speed_MotorRF.Tar_Speed = 4000;   
-	Robo->Speed_MotorRB.Tar_Speed = 4000;
+	Robo->Speed_MotorLF.Tar_Speed = -4000; 
+	Robo->Speed_MotorLB.Tar_Speed = -4000;
+	Robo->Speed_MotorRF.Tar_Speed = -4000;   
+	Robo->Speed_MotorRB.Tar_Speed = -4000;
 }
 
 void Calculate_and_send(void)//计算pid的输出和发送

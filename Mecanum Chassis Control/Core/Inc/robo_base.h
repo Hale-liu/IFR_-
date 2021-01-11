@@ -17,7 +17,6 @@
 #define ONE_CIRCLE (ROTOR_ANGLE*GEAR_RATIO)		//电机转动一圈的总机械角度
 #define WORKING 1
 #define MISSING 0
-#define R 300
 //---------------------------------//
 
 //---------底盘结构体部分----------//
@@ -86,6 +85,7 @@ typedef struct Robo_Base			//底盘结构体
 
 	int Speed_X;					//底盘X方向上目标速度
 	int Speed_Y;					//底盘Y方向上目标速度
+	int speed_turn;
 	float Angle;					//底盘运动的相对方向
 	
 	uint8_t Tx_CAN1[8];				//CAN1通信发送数据
