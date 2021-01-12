@@ -27,6 +27,7 @@ int IsEmpty (List *plist);
 void InserList1(List *plist, Node *pnode);
 void InserList2(List *plist, Node *pnode);
 void InserList3(List *plist, Node *pnode,int goal);
+void InserList4(List *plist, Node *pnode);
 void TraverList(List *plist, void(*Traver)(Node* pnode));
 Node *SeclectNode(List *plist,int goal);
 void ShowData (Node *pnode); 
@@ -34,6 +35,7 @@ void ChangeDate(Node *pnode);
 void Deletedate(List *plist, int goal);
 void Merge_Node(List *plist_1,List *plist_2,List *plist_3);
 void Ensure_order(List *plist);
+void BubbleSort(List *plist);
 
 int main()
 {
@@ -46,21 +48,17 @@ int main()
     for(int i=0;i<10;i++)
 	{
         Node *pnode = (Node*)malloc(sizeof(Node));
-        pnode -> data.x = 1;
+        scanf("%d",&pnode -> data.x); 
         pnode -> pnext = NULL;
-    	if(i==9)InserList3(pList_1, pnode,2);
-        else InserList2(pList_1, pnode);
+        InserList4(pList_1,pnode);
     }
     for(int i=0;i<10;i++)
 	{
         Node *pnode = (Node*)malloc(sizeof(Node));
-        pnode -> data.x = 1;
+        scanf("%d",&pnode -> data.x); 
         pnode -> pnext = NULL;
-    	if(i==9)InserList3(pList_2, pnode,2);
-        else InserList2(pList_2, pnode);
+		InserList4(pList_2,pnode);
     }
-    Deletedate(pList_1, 5);
-    
     TraverList(pList_1, ShowData);
     printf("\n\n\n");
     TraverList(pList_2, ShowData);
@@ -68,6 +66,56 @@ int main()
     Merge_Node(pList_1,pList_2,pList_3);
     TraverList(pList_3, ShowData);
     return 0;
+}
+
+void InserList4(List *plist, Node *pnode)
+{
+	if (IsEmpty(plist))
+    {
+    	plist -> pfront = pnode;
+    	plist -> prear = pnode;
+	} 
+    else
+    {
+    	plist -> prear -> pnext = pnode;
+    	pnode -> pprev = plist -> prear;
+	}
+    plist -> prear = pnode;
+    plist -> count++;
+    BubbleSort(plist);
+}
+
+void BubbleSort(List *plist)
+{	
+	int i,j;
+ 	for(i = plist -> count - 1; i>0; i--)
+ 	{
+ 		Node *ptemp = plist -> pfront;
+ 		ptemp->pprev=NULL; 
+    	for(j=0;j<i;j++)
+     	{
+        	if(ptemp -> data.x > ptemp -> pnext -> data.x)
+        	{
+        		if(ptemp == plist -> pfront) plist -> pfront = ptemp -> pnext;
+				if(ptemp == plist -> prear -> pprev) plist->prear = ptemp;
+				if(ptemp -> pnext -> pnext == NULL)
+				{
+					ptemp -> pnext -> pprev = NULL;
+					ptemp -> pprev = ptemp -> pnext;
+					ptemp -> pprev -> pnext = ptemp; 
+				}
+				else
+				{
+					ptemp -> pnext -> pnext -> pprev = ptemp;
+					ptemp -> pnext -> pprev = NULL;
+					ptemp -> pprev = ptemp -> pnext;
+					ptemp -> pnext = ptemp -> pnext->pnext;
+					ptemp -> pprev -> pnext = ptemp; 
+				}
+        	}
+        	else ptemp = ptemp->pnext;
+     	}	
+	}
 }
 
 void ShowData (Node *pnode)//展示链表 
@@ -94,7 +142,7 @@ void Merge_Node(List *plist_1,List *plist_2,List *plist_3)//合并两个链表
 	plist_3 -> pfront = plist_1 -> pfront;
 	plist_3 -> prear = plist_2 -> prear;
 	plist_3 -> count = plist_1 -> count + plist_2 -> count;
-	Ensure_order(plist_3);
+	BubbleSort(plist_3);
 }
 
 int ListInit(List **pplist) //链表创建
@@ -143,7 +191,7 @@ void Deletedate(List *plist, int goal)//删除任意节点
 		free(ptemp); 
 	}
 	plist -> count--;
-	Ensure_order(plist);
+	//Ensure_order(plist);
 } 
 
 void InserList1(List *plist, Node *pnode) //尾插

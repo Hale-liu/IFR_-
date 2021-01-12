@@ -4,13 +4,13 @@
 struct Data
 {
     int x;
-    int y;
 };
 
 struct Node
 {
     struct Data data;
     struct Node *pnext;
+    struct Node *pprev;
 };
 
 struct List
@@ -24,11 +24,7 @@ int ListInit(struct List **pplist);
 int IsEmpty (struct List *plist);
 void InserList(struct List *plist,struct Node *pnode);
 void TraverList(struct List *plist, void(*Traver)(struct Node* pnode));
-
-void ShowData (struct Node *pnode)
-{
-	printf("x=%d\ty=%d\n",pnode->data.x,pnode->data.y);
-}
+void ShowData (struct Node *pnode);
 
 int main()
 {
@@ -38,13 +34,17 @@ int main()
     for(i=0;i<10;i++)
 	{
         struct Node *pnode = (struct Node*)malloc(sizeof(struct Node));
-        pnode -> data.x =1;
-        pnode -> data.y =0;
+        pnode -> data.x =plist->count + 1;
         pnode -> pnext = NULL;
         InserList(pList, pnode);
     }
     TraverList(pList, ShowData);
     return 0;
+}
+
+void ShowData (struct Node *pnode)
+{
+	printf("x=%d\n",pnode->data.x);
 }
 
 int ListInit(struct List **pplist) //≥ı ºªØ
