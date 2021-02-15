@@ -6,7 +6,7 @@ dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Include/core_cm4.h
-dj usart dma\stm32f4xx_hal_tim.o: D:\ARM\ARMCC\Bin\..\include\stdint.h
+dj usart dma\stm32f4xx_hal_tim.o: D:\Hale_liu\tools\K\ARM\ARMCC\Bin\..\include\stdint.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Include/cmsis_version.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -14,7 +14,7 @@ dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-dj usart dma\stm32f4xx_hal_tim.o: D:\ARM\ARMCC\Bin\..\include\stddef.h
+dj usart dma\stm32f4xx_hal_tim.o: D:\Hale_liu\tools\K\ARM\ARMCC\Bin\..\include\stddef.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 dj usart dma\stm32f4xx_hal_tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp
+"yuntab_610\startup_stm32f427xx.o"
+"yuntab_610\main.o"
+"yuntab_610\gpio.o"
+"yuntab_610\can.o"
+"yuntab_610\stm32f4xx_it.o"
+"yuntab_610\stm32f4xx_hal_msp.o"
+"yuntab_610\stm32f4xx_hal_can.o"
+"yuntab_610\stm32f4xx_hal_rcc.o"
+"yuntab_610\stm32f4xx_hal_rcc_ex.o"
+"yuntab_610\stm32f4xx_hal_flash.o"
+"yuntab_610\stm32f4xx_hal_flash_ex.o"
+"yuntab_610\stm32f4xx_hal_flash_ramfunc.o"
+"yuntab_610\stm32f4xx_hal_gpio.o"
+"yuntab_610\stm32f4xx_hal_dma_ex.o"
+"yuntab_610\stm32f4xx_hal_dma.o"
+"yuntab_610\stm32f4xx_hal_pwr.o"
+"yuntab_610\stm32f4xx_hal_pwr_ex.o"
+"yuntab_610\stm32f4xx_hal_cortex.o"
+"yuntab_610\stm32f4xx_hal.o"
+"yuntab_610\stm32f4xx_hal_exti.o"
+"yuntab_610\stm32f4xx_hal_tim.o"
+"yuntab_610\stm32f4xx_hal_tim_ex.o"
+"yuntab_610\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "YUNTAB_610\YUNTAB_610.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "YUNTAB_610.map" -o YUNTAB_610\YUNTAB_610.axf

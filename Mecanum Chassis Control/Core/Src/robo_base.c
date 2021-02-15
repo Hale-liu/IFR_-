@@ -105,7 +105,7 @@ void Motor_Speed_Analysis(ROBO_BASE* Robo,uint8_t* RX_Data,uint32_t Motor_Num)
   Speed_System* S_Motor=NULL;
   switch(Motor_Num)
   {
-    case 0x201:S_Motor=&Robo->Speed_MotorLF;break;
+    case 0x205:S_Motor=&Robo->Speed_MotorLF;break;
     case 0x202:S_Motor=&Robo->Speed_MotorRF;break;
     case 0x203:S_Motor=&Robo->Speed_MotorRB;break;
     case 0x204:S_Motor=&Robo->Speed_MotorLB;break;

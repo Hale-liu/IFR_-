@@ -1,0 +1,1 @@
+2021_rm_ifr_infantry-master\startup_stm32f427xx.o: startup_stm32f427xx.s

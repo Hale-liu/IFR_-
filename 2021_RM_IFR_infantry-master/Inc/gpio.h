@@ -38,7 +38,9 @@
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void Power_Init(void);
+void Laser_Run(void);
+void Led_Run(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

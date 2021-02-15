@@ -23,6 +23,11 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "Remote.h"
+#include "robo_base.h"
+#include "YUNTAB.h"
+#include "usart.h"
+#include "EMC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,16 +57,22 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+CAN_RxHeaderTypeDef RxMessage_can1;
+CAN_RxHeaderTypeDef RxMessage_can2;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 extern TIM_HandleTypeDef htim2;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern UART_HandleTypeDef huart1;
 /* USER CODE BEGIN EV */
-
+extern RC_Ctl_t RC_CtrlData;
+extern UART_RX_BUFFER Uart1_Rx;
+extern ROBO_BASE Robo;
+extern ROBO_Yuntab Robo_yun;
+extern IMU_T IMU;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -201,16 +212,36 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles CAN1 RX0 interrupts.
+  */
+void CAN1_RX0_IRQHandler(void)
+{
+  /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
+	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_14,GPIO_PIN_RESET);
+	if(HAL_CAN_GetRxMessage(&hcan1,CAN_RX_FIFO0,&RxMessage_can1,Robo_yun.Rx_CAN1)==HAL_OK)
+	{
+		Motor_Pos_Analysis(&Robo_yun,Robo_yun.Rx_CAN1,RxMessage_can1.StdId);
+	}
+  /* USER CODE END CAN1_RX0_IRQn 0 */
+  HAL_CAN_IRQHandler(&hcan1);
+  /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
+
+  /* USER CODE END CAN1_RX0_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM2 global interrupt.
   */
 void TIM2_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM2_IRQn 0 */
-
+	mpu_get_data();
+	//Base_Contral(&Robo,&RC_CtrlData,&IMU);
+	//Yuntab_contral(&Robo_yun,&IMU);
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
-
+	
   /* USER CODE END TIM2_IRQn 1 */
 }
 
@@ -220,7 +251,7 @@ void TIM2_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-
+	Uart_DMA_Process(&huart1,&hdma_usart1_rx,&Uart1_Rx,RemoteDataProcess);
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
@@ -248,7 +279,10 @@ void DMA2_Stream2_IRQHandler(void)
 void CAN2_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN2_RX0_IRQn 0 */
-
+	if(HAL_CAN_GetRxMessage(&hcan2,CAN_RX_FIFO0,&RxMessage_can2,Robo.Rx_CAN2)==HAL_OK)
+	{
+		Motor_Speed_Analysis(&Robo,Robo.Rx_CAN2,RxMessage_can2.StdId);
+	}
   /* USER CODE END CAN2_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan2);
   /* USER CODE BEGIN CAN2_RX0_IRQn 1 */

@@ -39,7 +39,7 @@ extern SPI_HandleTypeDef hspi5;
 void MX_SPI5_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+uint8_t SPI5_ReadWriteByte(uint8_t TxData);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

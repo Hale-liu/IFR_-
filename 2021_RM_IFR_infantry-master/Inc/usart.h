@@ -33,13 +33,21 @@
 extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
+#define USART1_RX_LEN_MAX 18
 
+typedef struct
+{
+	uint8_t* Buffer[2];
+	uint8_t Buffer_Num;
+	uint16_t Length_Max;
+}UART_RX_BUFFER;
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void Uart_DMA_Process(UART_HandleTypeDef *huart,DMA_HandleTypeDef* hdma_usart_rx,UART_RX_BUFFER* Uart_Rx,void(*DataProcessFunc)(uint8_t *pData));
+void Usart_Init(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

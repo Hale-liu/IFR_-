@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp
+"yun_contral\startup_stm32f427xx.o"
+"yun_contral\main.o"
+"yun_contral\gpio.o"
+"yun_contral\can.o"
+"yun_contral\stm32f4xx_it.o"
+"yun_contral\stm32f4xx_hal_msp.o"
+"yun_contral\stm32f4xx_hal_can.o"
+"yun_contral\stm32f4xx_hal_rcc.o"
+"yun_contral\stm32f4xx_hal_rcc_ex.o"
+"yun_contral\stm32f4xx_hal_flash.o"
+"yun_contral\stm32f4xx_hal_flash_ex.o"
+"yun_contral\stm32f4xx_hal_flash_ramfunc.o"
+"yun_contral\stm32f4xx_hal_gpio.o"
+"yun_contral\stm32f4xx_hal_dma_ex.o"
+"yun_contral\stm32f4xx_hal_dma.o"
+"yun_contral\stm32f4xx_hal_pwr.o"
+"yun_contral\stm32f4xx_hal_pwr_ex.o"
+"yun_contral\stm32f4xx_hal_cortex.o"
+"yun_contral\stm32f4xx_hal.o"
+"yun_contral\stm32f4xx_hal_exti.o"
+"yun_contral\stm32f4xx_hal_tim.o"
+"yun_contral\stm32f4xx_hal_tim_ex.o"
+"yun_contral\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "Yun_Contral\Yun_Contral.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Yun_Contral.map" -o Yun_Contral\Yun_Contral.axf
